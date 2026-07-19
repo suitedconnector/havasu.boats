@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color: theme(colors.ink);
+    background: theme(colors.sandbar.50);
+  }
+  body {
+    font-family: theme(fontFamily.body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: theme(colors.buoy);
+    color: theme(colors.ink);
+  }
+}
