@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
 import { SITE } from "@/lib/constants";
 import { SiteHeader } from "@/components/site-header";
@@ -47,6 +48,20 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-7RPPVFB6S9"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-7RPPVFB6S9');
+          `}
+        </Script>
+      </head>
       <body>
         <SiteHeader />
         <main>{children}</main>
