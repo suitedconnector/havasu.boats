@@ -1,6 +1,6 @@
 import type { Listing, ServiceTag, Town } from "./types";
 import { LAUNCH_CATEGORIES, CATEGORY_SLUG } from "./constants";
-import listingsData from "@/data/listings.json";
+import listingsData from "@/data/listings-with-descriptions.json";
 
 // ============================================================================
 // The static data access layer. Every page reads from here — no runtime DB,

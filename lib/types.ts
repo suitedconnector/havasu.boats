@@ -38,6 +38,7 @@ export type Listing = {
   slug: string;
   name: string;
   description: string | null;
+  longDescription: string | null;
   town: Town | null;
   address: string | null;
   phone: string | null;

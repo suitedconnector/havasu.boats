@@ -112,6 +112,19 @@ export default async function ListingPage({
               </p>
             )}
 
+            {l.longDescription && (
+              <div className="mt-12 max-w-3xl">
+                <h2 className="text-2xl font-semibold text-channel-900">
+                  About {l.name}
+                </h2>
+                <div className="mt-4 space-y-4 text-base leading-relaxed text-channel-700">
+                  {l.longDescription.split("\n\n").map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Services + boat types */}
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
               {l.services.length > 0 && (
