@@ -5,6 +5,9 @@ const FALLBACK_EMAIL = "tal@trezian.com";
 
 export async function POST(req: NextRequest) {
   try {
+    console.log("RESEND_API_KEY exists?", !!process.env.RESEND_API_KEY);
+    console.log("RESEND_API_KEY starts with re_?", process.env.RESEND_API_KEY?.startsWith("re_"));
+
     const { listingId, name, email, message } = await req.json();
 
     if (!listingId || !name || !email || !message) {
