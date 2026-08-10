@@ -1,0 +1,6 @@
+{
+  "/[category]/page": "app/[category]/page.js",
+  "/api/contact-listing/route": "app/api/contact-listing/route.js",
+  "/listing/[slug]/page": "app/listing/[slug]/page.js",
+  "/page": "app/page.js"
+}
