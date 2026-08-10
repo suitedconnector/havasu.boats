@@ -99,25 +99,25 @@ export default async function ListingPage({
           )}
         </div>
 
-        {/* Hero photo */}
-        {l.photo && (
-          <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-sm bg-sandbar-100">
-            <Image
-              src={l.photo}
-              alt={l.name}
-              fill
-              sizes="(max-width: 1200px) 100vw, 1152px"
-              className="object-cover"
-              priority
-            />
-          </div>
-        )}
-
         <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[1fr_360px]">
           {/* Main content */}
           <div>
+            {/* Hero photo */}
+            {l.photo && (
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-sandbar-100">
+                <Image
+                  src={l.photo}
+                  alt={l.name}
+                  fill
+                  sizes="(max-width: 1200px) 100vw, 1152px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+
             {l.description && (
-              <p className="max-w-prose text-lg leading-relaxed text-channel-900">
+              <p className="mt-8 max-w-prose text-lg leading-relaxed text-channel-900">
                 {l.description}
               </p>
             )}
