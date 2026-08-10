@@ -81,7 +81,12 @@ export default function Home() {
                   <div>
                     <ChartLabel category={`${items.length}+ listings`} />
                     <h2 className="mt-1 font-display text-3xl font-bold text-channel-900">
-                      {CATEGORY_LABEL[c]}
+                      <Link
+                        href={`/${CATEGORY_SLUG[c]}`}
+                        className="hover:text-rock"
+                      >
+                        {CATEGORY_LABEL[c]}
+                      </Link>
                     </h2>
                     <p className="mt-1 max-w-xl text-channel-700">
                       {CATEGORY_INTRO[c]}
