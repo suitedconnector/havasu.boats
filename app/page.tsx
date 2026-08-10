@@ -47,6 +47,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Homepage intro paragraph with linked keywords */}
+      <section className="border-b border-channel-900/10 bg-sandbar-50">
+        <div className="mx-auto max-w-6xl px-6 py-12">
+          <p className="max-w-3xl text-lg leading-relaxed text-channel-700">
+            havasu.boats is the most complete directory of{" "}
+            <Link href="/rentals" className="text-channel-900 font-semibold hover:text-rock">
+              boat rental companies
+            </Link>
+            , <Link href="/dealers" className="text-channel-900 font-semibold hover:text-rock">
+              dealers
+            </Link>
+            , and{" "}
+            <Link href="/marinas" className="text-channel-900 font-semibold hover:text-rock">
+              marinas
+            </Link>
+            {" "}on Lake Havasu. Whether you're looking to rent a pontoon for the day, buy a used ski boat, or find a full-service marina with fuel and dry storage, browse our curated listings—no signup required. We've organized every major boat service provider around Lake Havasu and the Colorado River, from the Channel to Parker, so you can find exactly what you need in one place.
+          </p>
+        </div>
+      </section>
+
       {/* Category preview strips */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="space-y-16">
