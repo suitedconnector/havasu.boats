@@ -28,7 +28,7 @@ export default function Home() {
             category="Directory · Est. 2026"
           />
           <h1 className="mt-4 max-w-3xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl">
-            Every boat on the lake — rentals, dealers, marinas — in one place.
+            Lake Havasu Boat Rentals, Dealers & Marinas Directory
           </h1>
           <p className="mt-6 max-w-xl text-lg text-sandbar-100">
             {SITE.description} Curated locally. Free to browse. No signup.

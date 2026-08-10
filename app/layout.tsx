@@ -25,7 +25,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — ${SITE.tagline}`,
+    default: "Lake Havasu Boat Rentals, Dealers & Marinas | havasu.boats",
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
