@@ -19,9 +19,10 @@ type Props = {
   lng?: number | null;
   place?: string | null;
   category?: string | null;
+  variant?: "default" | "light";
 };
 
-export function ChartLabel({ lat, lng, place, category }: Props) {
+export function ChartLabel({ lat, lng, place, category, variant = "default" }: Props) {
   const coords =
     typeof lat === "number" && typeof lng === "number"
       ? `${dms(lat, true)}  ${dms(lng, false)}`
@@ -29,16 +30,19 @@ export function ChartLabel({ lat, lng, place, category }: Props) {
 
   const parts = [coords, place, category].filter(Boolean);
 
+  const textColor = variant === "light" ? "text-white" : "text-channel-500";
+  const separatorColor = variant === "light" ? "text-white/60" : "text-channel-300";
+
   return (
     <div
-      className="font-mono text-[11px] tracking-chart uppercase text-channel-500"
+      className={`font-mono text-[11px] tracking-chart uppercase ${textColor}`}
       aria-label="Location and category"
     >
       {parts.map((p, i) => (
         <span key={i}>
           {p}
           {i < parts.length - 1 && (
-            <span className="mx-2 text-channel-300" aria-hidden>
+            <span className={`mx-2 ${separatorColor}`} aria-hidden>
               ·
             </span>
           )}

@@ -26,6 +26,7 @@ export default function Home() {
             lng={-114.3224}
             place="Lake Havasu · Colorado River"
             category="Directory · Est. 2026"
+            variant="light"
           />
           <h1 className="mt-4 max-w-3xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl">
             Lake Havasu Boat Rentals, Dealers & Marinas Directory
