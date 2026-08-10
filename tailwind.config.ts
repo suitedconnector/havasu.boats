@@ -33,6 +33,8 @@ export default {
         },
         // Buoy — signal accent, sparingly
         buoy: "#F4B000",
+        // Button — call-to-action orange
+        button: "#ef8200",
         // Ink & paper
         ink: "#0C1116",
         paper: "#FBF9F4",

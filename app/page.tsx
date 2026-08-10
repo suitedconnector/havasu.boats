@@ -38,7 +38,7 @@ export default function Home() {
               <Link
                 key={c}
                 href={`/${CATEGORY_SLUG[c]}`}
-                className="rounded-sm bg-channel-900 px-5 py-3 font-medium text-paper transition hover:bg-rock"
+                className="rounded-sm bg-button px-5 py-3 font-medium text-paper transition hover:opacity-90"
               >
                 {CATEGORY_LABEL[c]} →
               </Link>
