@@ -200,7 +200,7 @@ export default async function ListingPage({
           {/* Right rail: lead form */}
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <div className="rounded-sm border border-channel-900/10 bg-paper p-6">
-              <LeadForm listingName={l.name} listingSlug={l.slug} />
+              <LeadForm listingName={l.name} listingId={l.id} />
             </div>
             {l.bookingUrl && (
               <a

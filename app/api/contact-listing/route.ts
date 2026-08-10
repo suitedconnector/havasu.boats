@@ -1,21 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getListingBySlug, getActiveListings } from "@/lib/listings";
+import { getActiveListings } from "@/lib/listings";
+
+const FALLBACK_EMAIL = "tal@trezian.com";
 
 export async function POST(req: NextRequest) {
   try {
-    const { listingSlug, name, email, message } = await req.json();
+    const { listingId, name, email, message } = await req.json();
 
-    if (!listingSlug || !name || !email || !message) {
+    if (!listingId || !name || !email || !message) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    const listing = getListingBySlug(listingSlug);
+    const listings = getActiveListings();
+    const listing = listings.find((l) => l.id === listingId);
+
     if (!listing) {
       return NextResponse.json({ error: "Listing not found" }, { status: 404 });
     }
+
+    // Use business email or fallback
+    const businessEmail = listing.email || FALLBACK_EMAIL;
+    if (!listing.email) {
+      console.log(`[Contact Form] Listing "${listing.name}" missing email, routing to fallback: ${FALLBACK_EMAIL}`);
+    }
+
+    // Prepare subject line
+    const subjectPrefix = !listing.email ? "[No email on file] " : "";
+    const subject = `${subjectPrefix}New inquiry about ${listing.name} from havasu.boats`;
 
     // Forward to Formspree
     const formData = new FormData();
@@ -23,9 +37,9 @@ export async function POST(req: NextRequest) {
     formData.append("email", email);
     formData.append("message", message);
     formData.append("business", listing.name);
-    formData.append("business_email", listing.email || "");
-    formData.append("_subject", `New inquiry about ${listing.name} from havasu.boats`);
-    formData.append("_replyto", listing.email || email);
+    formData.append("business_email", businessEmail);
+    formData.append("_subject", subject);
+    formData.append("_replyto", email);
 
     const response = await fetch("https://formspree.io/f/xgawayjq", {
       method: "POST",
@@ -33,6 +47,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (!response.ok) {
+      console.error(`[Contact Form] Failed to send for listing "${listing.name}":`, response.status);
       return NextResponse.json(
         { error: "Failed to send message" },
         { status: 500 }
@@ -41,7 +56,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Contact listing error:", error);
+    console.error("[Contact Form] Server error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

@@ -4,16 +4,10 @@ import { useState } from "react";
 
 type Props = {
   listingName: string;
-  listingSlug: string;
+  listingId: string;
 };
 
-/**
- * Lead capture form. At launch this doesn't post anywhere yet — it's the UI
- * seam. Wire it to Resend (already the pattern from haulagua) when you're
- * ready to route inquiries. Featured/paying listings will get inquiries
- * forwarded to them; basic listings collect for you as sales ammunition.
- */
-export function LeadForm({ listingName, listingSlug }: Props) {
+export function LeadForm({ listingName, listingId }: Props) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -22,7 +16,7 @@ export function LeadForm({ listingName, listingSlug }: Props) {
 
     const form = new FormData(e.currentTarget);
     const payload = {
-      listingSlug,
+      listingId,
       name: form.get("name"),
       email: form.get("email"),
       message: form.get("message"),
