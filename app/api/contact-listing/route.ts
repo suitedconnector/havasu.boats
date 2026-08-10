@@ -29,13 +29,40 @@ export async function POST(req: NextRequest) {
 
     // Prepare subject line
     const subjectPrefix = !listing.email ? "[No email on file] " : "";
-    const subject = `${subjectPrefix}New inquiry about ${listing.name} from havasu.boats`;
+    const subject = `${subjectPrefix}New Customer Inquiry from havasu.boats`;
+
+    // Format email body with template
+    const emailBody = `Hi ${listing.name},
+
+You've received a new inquiry from a customer who found your listing on havasu.boats, our Lake Havasu boat rental directory.
+
+**Customer Inquiry:**
+
+Name: ${name}
+Email: ${email}
+Message:
+${message}
+
+---
+
+**What's next?**
+
+Reply directly to ${email} to follow up. They'll be waiting to hear from you.
+
+Questions about havasu.boats or your listing? Contact us at tal@trezian.com
+
+---
+
+Best,
+havasu.boats
+The Lake Havasu boat directory
+https://havasu.boats`;
 
     // Forward to Formspree
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
-    formData.append("message", message);
+    formData.append("message", emailBody);
     formData.append("business", listing.name);
     formData.append("business_email", businessEmail);
     formData.append("_subject", subject);
