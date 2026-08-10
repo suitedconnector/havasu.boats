@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { getLiveCategories, getListingsByService } from "@/lib/listings";
 import { CATEGORY_LABEL, CATEGORY_SLUG, CATEGORY_INTRO, SITE } from "@/lib/constants";
@@ -8,31 +7,30 @@ export default function Home() {
   const cats = getLiveCategories();
   return (
     <>
-      {/* Lake Havasu hero image */}
-      <div className="relative w-full aspect-video bg-channel-900">
-        <Image
-          src="/lake-havasu-hero.jpg"
-          alt="London Bridge and boats on Lake Havasu, Arizona"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-      </div>
+      {/* Hero with background image */}
+      <section
+        className="relative border-b border-channel-900/10"
+        style={{
+          backgroundImage: "url(/lake-havasu-hero.jpg)",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
+        {/* Semi-transparent overlay for text legibility */}
+        <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Hero. The thesis: a directory framed as a chart of the lake. */}
-      <section className="border-b border-channel-900/10 bg-sandbar-50">
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+        {/* Hero content */}
+        <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <ChartLabel
             lat={34.4839}
             lng={-114.3224}
             place="Lake Havasu · Colorado River"
             category="Directory · Est. 2026"
           />
-          <h1 className="mt-4 max-w-3xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-channel-900 sm:text-6xl">
+          <h1 className="mt-4 max-w-3xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl">
             Every boat on the lake — rentals, dealers, marinas — in one place.
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-channel-700">
+          <p className="mt-6 max-w-xl text-lg text-sandbar-100">
             {SITE.description} Curated locally. Free to browse. No signup.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">

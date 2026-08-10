@@ -35,6 +35,14 @@ export const metadata: Metadata = {
     url: SITE.url,
     siteName: SITE.name,
     type: "website",
+    images: [
+      {
+        url: "/lake-havasu-hero.jpg",
+        width: 1280,
+        height: 848,
+        alt: "Lake Havasu with boats and London Bridge",
+      },
+    ],
   },
 };
 
@@ -61,6 +69,25 @@ export default function RootLayout({
             gtag('config', 'G-7RPPVFB6S9');
           `}
         </Script>
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: SITE.name,
+              description: SITE.description,
+              url: SITE.url,
+              image: {
+                "@type": "ImageObject",
+                url: `${SITE.url}/lake-havasu-hero.jpg`,
+                width: 1280,
+                height: 848,
+              },
+            }),
+          }}
+        />
       </head>
       <body>
         <SiteHeader />
