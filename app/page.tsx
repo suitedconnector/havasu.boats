@@ -30,9 +30,11 @@ export default function Home() {
           <h1 className="mt-4 max-w-3xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl">
             Lake Havasu Boat Rentals, Dealers & Marinas Directory
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-sandbar-100">
-            {SITE.description} Curated locally. Free to browse. No signup.
-          </p>
+          <div className="mt-6 max-w-xl rounded-sm bg-black/50 px-4 py-3">
+            <p className="text-lg text-sandbar-100">
+              {SITE.description} Curated locally. Free to browse. No signup.
+            </p>
+          </div>
           <div className="mt-10 flex flex-wrap gap-3">
             {cats.map((c) => (
               <Link
