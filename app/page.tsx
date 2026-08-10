@@ -74,12 +74,13 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="space-y-16">
           {cats.map((c) => {
-            const items = getListingsByService(c).slice(0, 3);
+            const allItems = getListingsByService(c);
+            const items = allItems.slice(0, 3);
             return (
               <div key={c}>
                 <div className="mb-6 flex items-baseline justify-between">
                   <div>
-                    <ChartLabel category={`${items.length}+ listings`} />
+                    <ChartLabel category={`${allItems.length} listings`} />
                     <h2 className="mt-1 font-display text-3xl font-bold text-channel-900">
                       <Link
                         href={`/${CATEGORY_SLUG[c]}`}
