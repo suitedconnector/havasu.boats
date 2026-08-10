@@ -12,6 +12,7 @@ import {
 } from "@/lib/constants";
 import { ChartLabel } from "@/components/chart-label";
 import { LeadForm } from "@/components/lead-form";
+import { Breadcrumb } from "@/components/breadcrumb";
 
 type Params = { slug: string };
 
@@ -67,7 +68,16 @@ export default async function ListingPage({
       />
 
       <article className="mx-auto max-w-6xl px-6 py-12">
-        {/* Breadcrumb / chart eyebrow */}
+        {/* Breadcrumb navigation */}
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            ...(primary ? [{ label: CATEGORY_LABEL[primary], href: `/${CATEGORY_SLUG[primary]}` }] : []),
+            { label: l.name },
+          ]}
+        />
+
+        {/* Chart eyebrow */}
         <ChartLabel
           lat={l.lat}
           lng={l.lng}

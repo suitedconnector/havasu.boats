@@ -13,6 +13,7 @@ import {
 } from "@/lib/constants";
 import { ChartLabel } from "@/components/chart-label";
 import { ListingCard } from "@/components/listing-card";
+import { Breadcrumb } from "@/components/breadcrumb";
 
 type Params = { category: string };
 
@@ -52,6 +53,7 @@ export default async function CategoryPage({
     <>
       <section className="border-b border-channel-900/10 bg-sandbar-50">
         <div className="mx-auto max-w-6xl px-6 py-14">
+          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: CATEGORY_LABEL[service] }]} />
           <ChartLabel
             place="Lake Havasu"
             category={`${listings.length} listings`}
