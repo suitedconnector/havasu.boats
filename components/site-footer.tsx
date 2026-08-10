@@ -18,8 +18,18 @@ export function SiteFooter() {
             <div className="mt-1">Lake Havasu · Colorado River</div>
           </div>
         </div>
-        <div className="mt-10 border-t border-sandbar-100/10 pt-6 text-xs text-sandbar-100/50">
-          Business owner? Contact us to claim or update your listing.
+        <div className="mt-10 border-t border-sandbar-100/10 pt-6 space-y-2 text-xs text-sandbar-100/50">
+          <div>Business owner? Contact us to claim or update your listing.</div>
+          <div>
+            <a
+              href="https://pixabay.com/photos/london-bridge-lake-havasu-boats-sun-364762/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-sandbar-100/70"
+            >
+              Hero photo by SoCali on Pixabay
+            </a>
+          </div>
         </div>
       </div>
     </footer>

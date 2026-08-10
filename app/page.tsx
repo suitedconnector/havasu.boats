@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLiveCategories, getListingsByService } from "@/lib/listings";
 import { CATEGORY_LABEL, CATEGORY_SLUG, CATEGORY_INTRO, SITE } from "@/lib/constants";
@@ -7,6 +8,18 @@ export default function Home() {
   const cats = getLiveCategories();
   return (
     <>
+      {/* Lake Havasu hero image */}
+      <div className="relative w-full aspect-video bg-channel-900">
+        <Image
+          src="/lake-havasu-hero.jpg"
+          alt="London Bridge and boats on Lake Havasu, Arizona"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
+
       {/* Hero. The thesis: a directory framed as a chart of the lake. */}
       <section className="border-b border-channel-900/10 bg-sandbar-50">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
