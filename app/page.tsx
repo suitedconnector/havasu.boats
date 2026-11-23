@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getLiveCategories, getListingsByService } from "@/lib/listings";
 import { CATEGORY_LABEL, CATEGORY_SLUG, CATEGORY_INTRO, SITE } from "@/lib/constants";
 import { ChartLabel } from "@/components/chart-label";
+
+export const metadata: Metadata = {
+  alternates: { canonical: SITE.url },
+};
 
 export default function Home() {
   const cats = getLiveCategories();
